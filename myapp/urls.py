@@ -1,7 +1,9 @@
 """This is the urls of the application MYAPP"""
 
 from django.urls import path, re_path
-from .views import *
+from .views import main, article_main, articles_archive, users, article, \
+                   article_archive, regex, phone_regex
+
 
 urlpatterns = [
     path('', main, name='home'),
