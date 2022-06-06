@@ -1,0 +1,13 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+    {% now "s" as id %}
+
+    <div class="text-page">
+        <h4>Go to random article</h4>
+        <ul>
+          <li><a href="{% url 'article' id %}">by id </a></li>
+          <li><a href="{% url 'article' id %}{% lorem 1 w random %}">by id & slug</a></li>
+        </ul>
+    </div>
+{% endblock %}

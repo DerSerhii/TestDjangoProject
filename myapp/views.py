@@ -1,40 +1,68 @@
-"""This is the CONTROLLER"""
+"""That's the CONTROLLER"""
 
+from django.shortcuts import render
 from django.http import HttpResponse
 
 
 def main(request):
-    """accepts a request and returns a response with text"""
-    return HttpResponse("Homepage")
+    """
+    Combines a given template with a given context dictionary
+    and returns an HttpResponse object with that rendered text
+    """
+
+    return render(request, 'myapp/index.html')
 
 
 def article_main(request):
-    """accepts a request and returns a response with text"""
-    return HttpResponse('This is the main page of articles')
+    """
+    Combines a given template with a given context dictionary
+    and returns an HttpResponse object with that rendered text
+    """
+
+    return render(request, 'myapp/page.html', {'header': 'Articles'})
 
 
 def articles_archive(request):
-    """accepts a request and returns a response with text"""
-    return HttpResponse('This is the page with archived articles')
+    """
+    Combines a given template with a given context dictionary
+    and returns an HttpResponse object with that rendered text
+    """
+
+    return render(request, 'myapp/page.html', {'header': 'Article archive'})
 
 
 def users(request, user_number=''):
-    """accepts a request and returns a response with text"""
-    text = f"user #{user_number}" if user_number else "all users"
-    return HttpResponse(f"This is the page of {text}")
+    """
+    Combines a given template with a given context dictionary
+    and returns an HttpResponse object with that rendered text
+    """
+
+    header = f"User #{user_number}" if user_number else "All site users"
+    return render(request, 'myapp/page.html', {'header':  header})
 
 
 def article(request, article_number, slug_text=''):
-    """accepts a request and returns a response with text with the parameter in url"""
-    return HttpResponse(
-        "This is an article #{}. {}".format(
-            article_number, "Name of this article is {}".format(
-                slug_text) if slug_text else "This is unnamed article"))
+    """
+    Combines a given template with a given context dictionary
+    and returns an HttpResponse object with that rendered text
+    """
+
+    header = f"Article #{article_number}"
+    return render(request, 'myapp/article.html', {
+        'header':  header,
+        'article_number': article_number,
+        'slug': slug_text,
+    })
 
 
 def article_archive(request, article_number):
-    """accepts the request and returns a response with the text with the parameter in url"""
-    return HttpResponse(f"This is an archive of article #{article_number}!")
+    """
+    Combines a given template with a given context dictionary
+    and returns an HttpResponse object with that rendered text
+    """
+
+    header = f"Article archive #{article_number}"
+    return render(request, 'myapp/page.html', {'header':  header})
 
 
 def regex(request, text):
