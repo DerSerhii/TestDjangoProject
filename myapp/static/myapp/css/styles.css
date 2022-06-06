@@ -1,0 +1,110 @@
+body {
+  font-family: Raleway, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  font-size: 1rem;
+  background-color: #222222;
+  padding-top: 70px;
+}
+
+.navbar {
+  background-color: #222222;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  color: #B5CACE;
+}
+
+.container a{
+  color: #B5CACE;
+  text-decoration: none;
+}
+
+.navbar-icon {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin-right: 1rem;
+  white-space: nowrap;
+}
+.navbar-icon:hover, .navbar-icon:focus {
+  text-decoration: none;
+}
+
+.text-1 {
+  color: rgba(142, 166, 243, 0.85);
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.text-2 {
+  color: #B5CACE;
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.text-page {
+  color: rgb(219, 228, 231);
+  font-weight: 800;
+  padding: 20px;
+}
+
+.text-page a{
+  color: yellow;
+  text-decoration: none;
+}
+
+.navbar-info {
+  display: flex;
+  flex-basis: auto;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+ }
+
+.nav-link {
+  display: block;
+  padding: 0.3rem;
+  color: rgba(181, 202, 206, 0.95);
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: rgba(142, 166, 243, 0.85);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.pad-link {
+  padding-right: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+div.container p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2rem;
+}
+
+.to_home {
+  position: fixed;
+  bottom: 25px;
+  left: 10px;
+  color: #B5CACE;
+  text-decoration: none;
+}

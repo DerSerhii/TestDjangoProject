@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+    <div class="text-page">
+        <h2>{{ header }}</h2>
+        {% if article_number|divisibleby:"2" %}
+            <p>This article number is even</p>
+        {% else %}
+            <p>This article number is odd</p>
+        {% endif %}
+    </div>
+
+    {% if slug %}
+        {% include 'myapp/add.html' with title=slug %}
+    {% endif%}
+{% endblock %}
