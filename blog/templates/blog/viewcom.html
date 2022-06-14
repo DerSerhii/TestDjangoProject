@@ -1,0 +1,14 @@
+<h2>{{ header }} comment </h2>
+<ol>
+    {% if comments %}
+        {% for comment in comments %}
+            <li>
+                Posted by {{comment.author}} on {{ comment.time_create|date:"d-m-Y H:i:s" }}
+                <br>
+                "{{ comment.body }}"
+            </li>
+        {% endfor %}
+    {% else %}
+        <h3>There are no comments in this category yet</h3>
+    {% endif %}
+</ol>

@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('comment_time_update', models.DateTimeField(auto_now=True)),
                 ('comment_body', models.CharField(max_length=255)),
                 ('comment_active', models.BooleanField(default=True)),
-                ('comment_article_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog_app.article')),
+                ('comment_article_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.article')),
             ],
         ),
         migrations.CreateModel(
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('phone', models.CharField(blank=True, max_length=10, null=True, validators=[django.core.validators.RegexValidator(message='Phone number must be entered in the format: 0675110200', regex='^(067|096|097|098|050|066|095|099|063|073|093)\\d{7}$')])),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='phone', to='blog_app.userprofile')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='phone', to='blog.userprofile')),
             ],
         ),
         migrations.CreateModel(
@@ -64,7 +64,7 @@ class Migration(migrations.Migration):
                 ('like_time_create', models.DateTimeField(auto_now_add=True)),
                 ('object_id', models.PositiveIntegerField()),
                 ('content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contenttypes.contenttype')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog_app.userprofile')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.userprofile')),
             ],
         ),
         migrations.CreateModel(
@@ -75,18 +75,18 @@ class Migration(migrations.Migration):
                 ('coc_time_update', models.DateTimeField(auto_now=True)),
                 ('coc_body', models.CharField(max_length=255)),
                 ('coc_active', models.BooleanField(default=True)),
-                ('coc_author_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog_app.userprofile')),
-                ('coc_comment_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog_app.comments')),
+                ('coc_author_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.userprofile')),
+                ('coc_comment_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.comments')),
             ],
         ),
         migrations.AddField(
             model_name='comments',
             name='comment_author_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog_app.userprofile'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.userprofile'),
         ),
         migrations.AddField(
             model_name='article',
             name='article_author_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='author', to='blog_app.userprofile'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='author', to='blog.userprofile'),
         ),
     ]
