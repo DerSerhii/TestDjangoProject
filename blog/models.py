@@ -56,7 +56,7 @@ class Comment(models.Model):
     class Meta:
         ordering = ['-time_create']
 
-    def save_ly(self, **kwargs):
+    def save(self, **kwargs):
         if not self.id:
             current = timezone.now()
             if current.month == 2 and current.day == 29:
