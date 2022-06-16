@@ -12,22 +12,22 @@ def view_comments(request):
     # Exercise #2
     # from blog.models import Comment, Article, UserProfile
     # from django.utils import timezone
-    # art_python_id = Article.objects.get(title='Python').id
-    # art_django_id = Article.objects.get(title='Django').id
-    # holovaty_id = UserProfile.objects.get(user__username='Adrian_Holovaty').id
-    # rossum_id = UserProfile.objects.get(user__username='Guido_van_Rossum').id
-    # willison_id = UserProfile.objects.get(user__username='Simon_Willison').id
+    # article_1 = Article.objects.get(pk=1)
+    # article_2 = Article.objects.get(pk=2)
+    # author_1 = UserProfile.objects.get(pk=1)
+    # author_2 = UserProfile.objects.get(pk=2)
+    # author_3 = UserProfile.objects.get(pk=3)
     # Comment.objects.bulk_create([
-    #     Comment(to_article_id=art_python_id,
-    #             author_id=rossum_id,
+    #     Comment(to_article=article_1,
+    #             author=author_1,
     #             body="Start comment",
     #             time_create=timezone.now()),
-    #     Comment(to_article_id=art_django_id,
-    #             author_id=holovaty_id,
+    #     Comment(to_article=article_2,
+    #             author=author_2,
     #             body="This comment is in the middle. Will be next",
     #             time_create=timezone.now()),
-    #     Comment(to_article_id=art_django_id,
-    #             author_id=willison_id,
+    #     Comment(to_article=article_1,
+    #             author=author_3,
     #             body="This comment is the last one. Finish",
     #             time_create=timezone.now()),
     # ])
@@ -35,12 +35,12 @@ def view_comments(request):
 
     # Exercise #3
     # from blog.models import Comment, Article, UserProfile
-    # art_python_id = Article.objects.get(title='Python').id
-    # rossum_id = UserProfile.objects.get(user__username='Guido_van_Rossum').id
-    # com_1 = Comment(to_article_id=art_python_id,
-    #                 author_id=rossum_id,
-    #                 body="It was a year ago")
-    # com_1.save()
+    # article = Article.objects.get(pk=1)
+    # author = UserProfile.objects.get(pk=2)
+    # com = Comment(to_article=article,
+    #               author=author,
+    #               body="It was a year ago !!!")
+    # com.save()
     status['ex_3'] = 'OK'
 
     # Exercise #4
