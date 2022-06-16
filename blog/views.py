@@ -10,30 +10,37 @@ def view_comments(request):
     status['ex_1'] = 'OK'
 
     # Exercise #2
-    # from blog.models import Comment
+    # from blog.models import Comment, Article, UserProfile
     # from django.utils import timezone
+    # art_python_id = Article.objects.get(title='Python').id
+    # art_django_id = Article.objects.get(title='Django').id
+    # holovaty_id = UserProfile.objects.get(user__username='Adrian_Holovaty').id
+    # rossum_id = UserProfile.objects.get(user__username='Guido_van_Rossum').id
+    # willison_id = UserProfile.objects.get(user__username='Simon_Willison').id
     # Comment.objects.bulk_create([
-    #     Comment(to_article_id="1",
-    #             author_id="2",
+    #     Comment(to_article_id=art_python_id,
+    #             author_id=rossum_id,
     #             body="Start comment",
     #             time_create=timezone.now()),
-    #     Comment(to_article_id="2",
-    #             author_id="1",
+    #     Comment(to_article_id=art_django_id,
+    #             author_id=holovaty_id,
     #             body="This comment is in the middle. Will be next",
     #             time_create=timezone.now()),
-    #     Comment(to_article_id="2",
-    #             author_id="2",
+    #     Comment(to_article_id=art_django_id,
+    #             author_id=willison_id,
     #             body="This comment is the last one. Finish",
     #             time_create=timezone.now()),
     # ])
     status['ex_2'] = 'OK'
 
     # Exercise #3
-    # from blog.models import Comment
-    # a = Comment(to_article_id="1",
-    #             author_id="2",
-    #             body="It was a year ago")
-    # a.save()
+    # from blog.models import Comment, Article, UserProfile
+    # art_python_id = Article.objects.get(title='Python').id
+    # rossum_id = UserProfile.objects.get(user__username='Guido_van_Rossum').id
+    # com_1 = Comment(to_article_id=art_python_id,
+    #                 author_id=rossum_id,
+    #                 body="It was a year ago")
+    # com_1.save()
     status['ex_3'] = 'OK'
 
     # Exercise #4
