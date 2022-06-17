@@ -11,23 +11,25 @@ def view_comments(request):
 
     # Exercise #2
     # from blog.models import Comment, Article, UserProfile
+    # from django.contrib.auth.models import User
     # from django.utils import timezone
-    # article_1 = Article.objects.get(pk=1)
-    # article_2 = Article.objects.get(pk=2)
-    # author_1 = UserProfile.objects.get(pk=1)
-    # author_2 = UserProfile.objects.get(pk=2)
-    # author_3 = UserProfile.objects.get(pk=3)
+    # user1 = User.objects.create(username="user1")
+    # user2 = User.objects.create(username="user2")
+    # user_prof_1 = UserProfile.objects.create(user=user1)
+    # user_prof_2 = UserProfile.objects.create(user=user2)
+    # article_1 = Article.objects.create(title="Article 1",content="something",author=user_prof_1,time_create=timezone.now())
+    # article_2 = Article.objects.create(title="Article 2",content="something",author=user_prof_1,time_create=timezone.now())
     # Comment.objects.bulk_create([
     #     Comment(to_article=article_1,
-    #             author=author_1,
+    #             author=user_prof_1,
     #             body="Start comment",
     #             time_create=timezone.now()),
     #     Comment(to_article=article_2,
-    #             author=author_2,
+    #             author=user_prof_2,
     #             body="This comment is in the middle. Will be next",
     #             time_create=timezone.now()),
     #     Comment(to_article=article_1,
-    #             author=author_3,
+    #             author=user_prof_2,
     #             body="This comment is the last one. Finish",
     #             time_create=timezone.now()),
     # ])
@@ -35,10 +37,13 @@ def view_comments(request):
 
     # Exercise #3
     # from blog.models import Comment, Article, UserProfile
-    # article = Article.objects.get(pk=1)
-    # author = UserProfile.objects.get(pk=2)
-    # com = Comment(to_article=article,
-    #               author=author,
+    # from django.contrib.auth.models import User
+    # from django.utils import timezone
+    # user3 = User.objects.create(username="user3")
+    # user_prof_3 = UserProfile.objects.create(user=user3)
+    # article_3 = Article.objects.create(title="Article 3",content="something",author=user_prof_3,time_create=timezone.now())
+    # com = Comment(to_article=article_3,
+    #               author=user_prof_3,
     #               body="It was a year ago !!!")
     # com.save()
     status['ex_3'] = 'OK'
