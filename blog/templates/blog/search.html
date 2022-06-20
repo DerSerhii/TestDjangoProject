@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+    {% if query %}
+
+        <h2>Comments containing "{{ query }}"</h2>
+        <h3>
+            {% with results.count as total_results %}
+                Found {{ total_results }} result{{ total_results|pluralize }}
+            {% endwith %}
+        </h3>
+
+        {% for comment in results %}
+            <h5>{{ comment.author }} - {{ comment.time_create }}</h5>
+            <p>{{ comment.body|truncatewords:10 }}</p>
+            {% empty %}
+            <p>There are no results for your query.</p>
+        {% endfor %}
+
+        <p><a href="{% url 'search-comment' %}">Search again</a></p>
+
+    {% else %}
+
+        <form method="get">
+            <h2>Search comments by text</h2>
+            <div class="form-error">{{ form.non_field_errors }}</div>
+
+            {% for attr in form %}
+                {% if attr.name == 'only_current_user' and not request.user.is_authenticated %}
+                {% else %}
+                    <p><label class="form-label" for="{{ attr.id_for_label }}">{{attr.label}}: </label>{{ attr }}</p>
+                    <div class="form-error">{{ attr.errors }}</div>
+                {% endif %}
+            {% endfor %}
+
+            <button type="submit">Search</button>
+        </form>
+
+    {% endif %}
+
+{% endblock %}

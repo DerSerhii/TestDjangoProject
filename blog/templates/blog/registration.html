@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <h2>Registration</h2>
+        <div class="form-error">{{ form.non_field_errors }}</div>
+
+        {% for attr in form %}
+            <p><label class="form-label" for="{{ attr.id_for_label }}">{{attr.label}}: </label>{{ attr }}</p>
+            <div class="form-error">{{ attr.errors }}</div>
+        {% endfor %}
+
+        <button type="submit">Register</button>
+    </form>
+
+{% endblock %}
