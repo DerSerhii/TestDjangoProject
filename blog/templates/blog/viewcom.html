@@ -1,0 +1,21 @@
+<h2>{{ header }}</h2>
+<ol>
+    {% if comments %}
+        {% for comment in comments %}
+            <li>
+                Posted by {{comment.author}} on {{ comment.time_create|date:"d-m-Y H:i:s" }}
+                <br>
+                "{{ comment.body }}"
+            </li>
+        {% endfor %}
+    {% else %}
+        <h3>There are no comments in this category yet</h3>
+    {% endif %}
+</ol>
+
+<h4>Exercise #1 status: "{{ status.ex_1}}"</h4>
+<h4>Exercise #2 status: "{{ status.ex_2}}"</h4>
+<h4>Exercise #3 status: "{{ status.ex_3}}"</h4>
+<h4>Exercise #4 status: "{{ status.ex_4}}"</h4>
+<h4>Exercise #5 status: "{{ status.ex_5}}"</h4>
+<h4>Exercise #6 status: "{{ status.ex_6}}"</h4>

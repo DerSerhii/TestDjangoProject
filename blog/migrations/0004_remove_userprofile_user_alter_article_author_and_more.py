@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog_app', '0003_rename_article_author_id_article_author_and_more'),
+        ('blog', '0003_rename_article_author_id_article_author_and_more'),
     ]
 
     operations = [
@@ -18,11 +18,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='article',
             name='author',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog_app.userprofile'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.userprofile'),
         ),
         migrations.AlterField(
             model_name='phoneuser',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog_app.userprofile'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.userprofile'),
         ),
     ]
