@@ -1,4 +1,10 @@
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from .forms import CandidateCefrForm, AuthenticationBloggerForm, RegistrationBloggerForm, PasswordChangeForm, \
+    SearchCommentForm
 from .models import Comment
 
 
@@ -69,4 +75,92 @@ def view_comments(request):
         'header': 'Сomments',
         'comments': comments,
         'status': status,
+    })
+
+
+def main(request):
+    return render(request, 'blog/index.html')
+
+
+def blogger_profile(request):
+    return render(request, 'blog/profile.html')
+
+
+def candidate_cefr_form_view(request):
+    if request.method == 'POST':
+        form = CandidateCefrForm(request.POST)
+        if form.is_valid():
+            name_candidate = form.cleaned_data['name']
+            return render(request, 'blog/cand-cefr-approved.html', {'name': name_candidate})
+    else:
+        form = CandidateCefrForm()
+
+    return render(request, 'blog/cand-cefr.html', {'form': form})
+
+
+def blogger_login(request):
+    if request.method == 'POST':
+        form = AuthenticationBloggerForm(request.POST)
+        if form.is_valid():
+            login(request, form.user)
+            return HttpResponseRedirect('/blog')
+    else:
+        form = AuthenticationBloggerForm()
+    
+    return render(request, 'blog/login.html', {'form': form})
+
+
+def blogger_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/blog/login')
+
+
+def blogger_register(request):
+    if request.method == 'POST':
+        form = RegistrationBloggerForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(username=form.cleaned_data['username'],
+                                            first_name=form.cleaned_data['first_name'],
+                                            last_name=form.cleaned_data['last_name'],
+                                            email=form.cleaned_data['email'],
+                                            password=form.cleaned_data['password'])
+            login(request, user)
+            return HttpResponseRedirect('/blog')
+    else:
+        form = RegistrationBloggerForm()
+
+    return render(request, 'blog/registration.html', {'form': form})
+
+
+@login_required(login_url='/blog/login')
+def password_change(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            request.user.set_password(form.cleaned_data['new_password'])
+            request.user.save()
+            login(request, request.user)
+            return HttpResponseRedirect('/blog')
+    else:
+        form = PasswordChangeForm()
+
+    return render(request, 'blog/password-change.html', {'form': form})
+
+
+def search_comment(request):
+    form = SearchCommentForm()
+    query = None
+    results = []
+    if request.GET:
+        form = SearchCommentForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['search']
+            results = Comment.objects.filter(body__icontains=query)
+            if 'only_current_user' in request.GET:
+                results = results.filter(author__user__username=request.user)
+
+    return render(request, 'blog/search.html', {
+        'form': form,
+        'query': query,
+        'results': results
     })
